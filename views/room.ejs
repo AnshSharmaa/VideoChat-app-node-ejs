@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room</title>
+    <script>
+        //var to get the current room id(this is the ejs syntax)
+        const ROOM_ID='<%= roomID %>';
+    </script>
+    <script src='/socket.io/socket.io.js'></script>
+    <script src='script.js' defer></script>
+    <style>
+        /* we basically made little squares of 300x300 px and it will divide them automatically*/
+        #video-grid {
+            display: grid;
+            grid-template-columns: repeat(autofill, 300px);
+            grid-auto-rows: 300px;
+        }
+        /* styling the video to crop the extra part and keep the aspect ratio*/
+        video {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='video-grid'>
+
+    </div>
+</body>
+
+</html>
