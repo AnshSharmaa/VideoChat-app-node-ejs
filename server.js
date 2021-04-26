@@ -18,11 +18,16 @@ app.get('/:room', (req, res) => {
     res.render('room', { roomID: req.params.room });
 })
 
-// making a socket and telling it what to do when there is a connection and when join-room
+// making a socket and telling it what to do when there is a connection
 // this is in socket io syntax
 io.on('connection', socket => {
-    socket.on('join-room', (roodID, userId) => {
-        console.log(roodID, userId);
+    /*
+    console.log(roodID, userId);
+    }) 
+    */
+    socket.on('join-room', (roomId, userId) => {
+        socket.join(roomId); // joins+makes a room
+        socket.to(roomId).emit('user-connected', userId) // broadcating a message when someone joins a room
     })
 })
 
